@@ -66,8 +66,8 @@ const Item: React.FC = () => {
         <Image src="http://img.movist.com/?img=/x00/05/74/59_p1.jpg"></Image>
       </ImageWrapper>
       <Info>
-        <Title>Cat taking a nap</Title>
-        <Description>zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</Description>
+        <Title>SlamDunk The First</Title>
+        <Description>뚫어 송태섭..!, 선생님.. 농구가 하고 싶어요..</Description>
       </Info>
     </Container>
   );
@@ -78,7 +78,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1500);
   }, []);
 
   return (

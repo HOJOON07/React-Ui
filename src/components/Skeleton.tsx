@@ -37,21 +37,20 @@ const pulseAnimation = css`
 //스켈레톤을 감쌀 element
 
 const Base = styled.div<Props>`
-  ${({ color }) =>
-    color &&
-    `background-color:${color}`}; // 컬러가 있으면 백그라운드 컬러는 컬러다.
-  ${({ rounded }) =>
-    rounded && `border-radius:8px`}; // 라운디드가 같으면 radius 는 8px
+  ${({ color }) => color && `background-color:${color}`}; 
+    // 컬러가 있으면 백그라운드 컬러는 컬러다.
+  ${({ rounded }) => rounded && "border-radius: 8px"}; 
+    // 라운디드가 같으면 radius 는 8px
   ${({ circle }) =>
-    circle && `border-radius: 50%`}; //circle 을 받으면 radius 50%
+    circle && "border-radius: 50%"}; //circle 을 받으면 radius 50%
   ${({ width, height }) =>
     (width || height) &&
-    `display:block`}; //width,height 가 있다면 display는 block으로 선언해준다.
+    "display:block"}; //width,height 가 있다면 display는 block으로 선언해준다.
   ${({ animation }) =>
     animation &&
-    pulseAnimation}; //animation이 있다면 pulseAnimation을 적용한다. animation이 true 이면 해당하는 애니메이션이 동작한다.
+    pulseAnimation};, //animation이 있다면 pulseAnimation을 적용한다. animation이 true 이면 해당하는 애니메이션이 동작한다.
   width: ${({ width, unit }) => width && unit && `${width}${unit}`};
-  height: ${({ height, unit }) => height && unit && `${height}${unit}`};
+  height: ${({ height, unit }) => height && unit && `${height}${unit}`} ;
 `;
 
 const Content = styled.span`
@@ -63,6 +62,7 @@ const Skeleton: React.FC<Props> = ({
   width,
   height,
   circle,
+  rounded,
   count,
   unit,
   color,
@@ -73,8 +73,17 @@ const Skeleton: React.FC<Props> = ({
     [count]
   );
   return (
-    <Base>
-      <Content></Content>
+    <Base
+      style={style}
+      rounded={rounded}
+      circle={circle}
+      width={width}
+      height={height}
+      animation={animation}
+      unit={unit}
+      color={color}
+    >
+      <Content>{content}</Content>
     </Base>
   );
 };
