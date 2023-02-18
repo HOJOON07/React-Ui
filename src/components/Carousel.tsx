@@ -141,5 +141,5 @@ const Carousel: React.FC = () => {
     </Base>
   );
 };
-
+console.log("커밋..");
 export default Carousel;
