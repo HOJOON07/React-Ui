@@ -33,6 +33,7 @@ export default function App() {
   const handlePageChange = (currentPage: number): void => {
     setPage(currentPage);
   };
+
   useEffect(() => {
     const fetch = async () => {
       const params = { page, size: 10 };
@@ -46,12 +47,12 @@ export default function App() {
       );
       setTotalPages(totalPages);
       setItems(data);
-      console.log(items);
+      // console.log(items);
       console.log(data);
     };
 
     fetch();
-  }, []);
+  }, [page]);
   return (
     <div className="App">
       <ul>

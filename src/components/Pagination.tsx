@@ -63,6 +63,9 @@ const Pagination: React.FC<Props> = ({
     else if (item.indexOf("prev") > -1)
       return <GrFormPrevious></GrFormPrevious>;
     else if (item.indexOf("next") > -1) return <GrFormNext></GrFormNext>;
+    else {
+      return item;
+    }
   };
 
   const { items } = usePagination({
