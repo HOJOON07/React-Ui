@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import { throttle } from "throttle-debounce";
 
 interface Airline {
   id: number;
@@ -29,7 +30,7 @@ export default function App() {
   const [isScrollBottom, setIsScrollBottom] = useState<boolean>(false);
 
   const getPassengers = async (init?: boolean) => {
-    const params = { page: currentPageRef.current, size: 90 };
+    const params = { page: currentPageRef.current, size: 50 };
     try {
       const response = await axios.get(
         "https://api.instantwebtools.net/v1/passenger",
@@ -49,21 +50,22 @@ export default function App() {
     }
   };
 
-  const handleScroll = () => {
+  const handleScroll = throttle(1000, () => {
     if (listRef.current) {
       const { scrollHeight, offsetHeight, scrollTop } = listRef.current;
 
       const offset = 50;
 
       console.log("triger");
+      console.log(scrollHeight, offsetHeight, scrollTop);
 
       setIsScrollBottom(scrollHeight - offsetHeight - scrollTop < offset);
     }
-  };
+  });
 
   useEffect(() => {
     if (isScrollBottom) {
-      currentPageRef.current += 1;
+      currentPageRef.current = currentPageRef.current + 1;
 
       !isLast && getPassengers();
     }
@@ -76,7 +78,6 @@ export default function App() {
   return (
     <div className="App">
       <ul ref={listRef} className="list" onScroll={handleScroll}>
-        <li className="item"></li>
         {passengers.map((passenger) => (
           <li className="item" key={passenger._id}>
             {passenger.name}
