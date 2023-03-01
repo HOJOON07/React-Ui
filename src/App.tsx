@@ -30,7 +30,7 @@ export default function App() {
   const [isScrollBottom, setIsScrollBottom] = useState<boolean>(false);
 
   const getPassengers = async (init?: boolean) => {
-    const params = { page: currentPageRef.current, size: 50 };
+    const params = { page: currentPageRef.current, size: 40 };
     try {
       const response = await axios.get(
         "https://api.instantwebtools.net/v1/passenger",
