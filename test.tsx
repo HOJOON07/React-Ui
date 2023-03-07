@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+
 import useIntersectionObserver from "./hooks/useIntersectionObserver";
 
 interface Airline {
@@ -9,14 +10,14 @@ interface Airline {
   logo: string;
   slogan: string;
   head_quaters: string;
-  wbsite: string;
+  website: string;
   established: string;
 }
 
 interface Passenger {
   _id: string;
   name: string;
-  tripes: number;
+  trips: number;
   airline: Airline;
   __v: number;
 }
@@ -26,25 +27,26 @@ interface Props {
   onFetchMorePassengers: () => void;
 }
 
-const Passenger: React.FC<React.PropsWithChildren<Props>> = ({
+const Item: React.FC<React.PropsWithChildren<Props>> = ({
+  children,
   isLastItem,
   onFetchMorePassengers,
-  children,
 }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null); // 감시할 엘리먼트
   const entry = useIntersectionObserver(ref, {});
-  const isIntersecting = !!entry?.isIntersecting;
+  const isIntersecting = !!entry?.isIntersecting; // 겹치는 영역이 존재하는 지 여부
 
   useEffect(() => {
-    isLastItem && isIntersecting && onFetchMorePassengers();
+    isLastItem && isIntersecting && onFetchMorePassengers(); // 목록의 마지막에 도달했을 때, 리스트를 더 불러오도록 요청한다.
   }, [isLastItem, isIntersecting]);
+
   return (
     <div
       ref={ref}
       style={{
         minHeight: "100vh",
         display: "flex",
-        border: "1px solid black",
+        border: "1px dashed #000",
       }}
     >
       <div style={{ margin: "auto" }}>{children}</div>
@@ -52,24 +54,25 @@ const Passenger: React.FC<React.PropsWithChildren<Props>> = ({
   );
 };
 
-export default function App() {
-  const [paseengers, setPaseengers] = useState<Array<Passenger>>([]);
+function App() {
+  const [passengers, setPassengers] = useState<Array<Passenger>>([]);
+
   const [page, setPage] = useState<number>(0);
   const [isLast, setIsLast] = useState<boolean>(false);
 
   const getPassengers = async () => {
-    const params = { page, size: 10 };
+    const params = { page, size: 30 };
 
     try {
-      const res = await axios.get(
+      const response = await axios.get(
         "https://api.instantwebtools.net/v1/passenger",
         { params }
       );
 
-      const passengers = res.data.data;
-      const isLast = res.data.totalPages === page;
+      const passengers = response.data.data;
+      const isLast = response.data.totalPages === page;
 
-      setPaseengers((prev) => [...prev, ...passengers]);
+      setPassengers((prev) => [...prev, ...passengers]);
       setIsLast(isLast);
     } catch (e) {
       console.error(e);
@@ -81,16 +84,18 @@ export default function App() {
   }, [page]);
 
   return (
-    <div className="App">
-      {paseengers.map((paseenger, idx) => (
-        <Passenger
-          key={paseenger._id}
-          isLastItem={paseengers.length - 1 === idx}
+    <>
+      {passengers.map((passenger, idx) => (
+        <Item
+          key={passenger._id}
+          isLastItem={passengers.length - 1 === idx}
           onFetchMorePassengers={() => setPage((prev) => prev + 1)}
         >
-          {paseenger.name}
-        </Passenger>
+          {passenger.name}
+        </Item>
       ))}
-    </div>
+    </>
   );
 }
+
+export default App;
