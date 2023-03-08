@@ -1,6 +1,7 @@
 import React from "react";
 import { atom, selector, useRecoilValue } from "recoil";
 import axios from "axios";
+import Calendar from "./Calendar";
 
 const todoIdState = atom({
   key: "todoIdState",
@@ -24,8 +25,7 @@ export default function TodoList() {
 
   return (
     <div>
-      {data.title}
-      {data.userId}
+      <Calendar></Calendar>
     </div>
   );
 }
