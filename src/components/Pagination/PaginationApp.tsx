@@ -47,7 +47,6 @@ export default function PaginationApp() {
       );
       setTotalPages(totalPages);
       setItems(data);
-      // console.log(items);
       console.log(data);
     };
 

@@ -1,14 +1,22 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Router from "./Router";
-// import "./index.css";
+import { RecoilRoot } from "recoil";
 
 import reportWebVitals from "./reportWebVitals";
+import Fallback from "./components/todoList/fallback";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-root.render(<Router></Router>);
+root.render(
+  <RecoilRoot>
+    <React.Suspense fallback={<Fallback></Fallback>}>
+      {/* <React.Suspense fallback={<p>Loading....</p>}> */}
+      <Router></Router>
+    </React.Suspense>
+  </RecoilRoot>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
