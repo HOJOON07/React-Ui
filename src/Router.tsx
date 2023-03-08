@@ -1,11 +1,19 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CarouselContainer from "./components/Carousel/CarouselContainer";
+import InfiniteScroll from "./components/infiniteObserver/infiniteObserver";
+import ModalApp from "./components/Modal/ModalApp";
+import PaginationApp from "./components/Pagination/PaginationApp";
+import SkeletonApp from "./components/Skeleton/skeletonApp";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route></Route>
+        <Route path="/" element={<CarouselContainer />}></Route>
+        <Route path="/infinite" element={<InfiniteScroll />}></Route>
+        <Route path="/modal" element={<ModalApp />}></Route>
+        <Route path="/skeleton" element={<SkeletonApp />}></Route>
       </Routes>
     </BrowserRouter>
   );

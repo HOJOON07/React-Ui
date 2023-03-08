@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import useIntersectionObserver from "./hooks/useIntersectionObserver";
+import useIntersectionObserver from "./useIntersectionObserver";
 
 interface Airline {
   id: number;
@@ -52,7 +52,7 @@ const Passenger: React.FC<React.PropsWithChildren<Props>> = ({
   );
 };
 
-export default function App() {
+export default function InfiniteScroll() {
   const [paseengers, setPaseengers] = useState<Array<Passenger>>([]);
   const [page, setPage] = useState<number>(0);
   const [isLast, setIsLast] = useState<boolean>(false);
