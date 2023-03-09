@@ -5,7 +5,7 @@ import InfiniteScroll from "./components/infiniteObserver/infiniteObserver";
 import ModalApp from "./components/Modal/ModalApp";
 import PaginationApp from "./components/Pagination/PaginationApp";
 import SkeletonApp from "./components/Skeleton/skeletonApp";
-import TodoList from "./components/todoList/todoList";
+import TodoListApp from "./components/todoList/todoListApp";
 
 const Router = () => {
   return (
@@ -16,7 +16,7 @@ const Router = () => {
         <Route path="/modal" element={<ModalApp />}></Route>
         <Route path="/skeleton" element={<SkeletonApp />}></Route>
         <Route path="/pagination" element={<PaginationApp />}></Route>
-        <Route path="/todoList" element={<TodoList />}></Route>
+        <Route path="/todoList" element={<TodoListApp />}></Route>
       </Routes>
     </BrowserRouter>
   );

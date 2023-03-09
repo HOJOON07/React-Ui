@@ -1,5 +1,5 @@
 import React from "react";
-import { atom, selector, useRecoilValue } from "recoil";
+import { atom, RecoilRoot, selector, useRecoilValue } from "recoil";
 import axios from "axios";
 import Calendar from "./Calendar";
 
@@ -20,12 +20,16 @@ const todoItemQuery = selector({
     return res.data;
   },
 });
-export default function TodoList() {
+export default function TodoListApp() {
   const data = useRecoilValue(todoItemQuery);
 
   return (
     <div>
-      <Calendar></Calendar>
+      <RecoilRoot>
+        <React.Suspense fallback={<p>Loading....</p>}>
+          <Calendar></Calendar>
+        </React.Suspense>
+      </RecoilRoot>
     </div>
   );
 }
