@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import CarouselContainer from "./components/Carousel/CarouselContainer";
 import InfiniteScroll from "./components/infiniteObserver/infiniteObserver";
 import ModalApp from "./components/Modal/ModalApp";

@@ -24,12 +24,10 @@ export default function TodoListApp() {
   const data = useRecoilValue(todoItemQuery);
 
   return (
-    <div>
-      <RecoilRoot>
-        <React.Suspense fallback={<p>Loading....</p>}>
-          <Calendar></Calendar>
-        </React.Suspense>
-      </RecoilRoot>
-    </div>
+    <RecoilRoot>
+      <React.Suspense>
+        <Calendar></Calendar>
+      </React.Suspense>
+    </RecoilRoot>
   );
 }

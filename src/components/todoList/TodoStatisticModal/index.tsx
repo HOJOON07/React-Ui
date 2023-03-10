@@ -86,7 +86,7 @@ const TodoStatisticsModal: React.FC = () => {
 
   const handleClose = () => setIsOpen(false);
 
-  const removeTodo = (id: string): void => {
+  const removeTodo = (id: string) => {
     setTodoList(todoList.filter((todo) => todo.id !== id));
   };
 

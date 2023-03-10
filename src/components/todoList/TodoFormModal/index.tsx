@@ -43,14 +43,14 @@ const Card = styled.div`
 `;
 
 const TodoFormModal: React.FC = () => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
   const [todo, setTodo] = useState<string>("");
 
   const selectedDate = useRecoilValue(selectedDateState);
   const todoList = useRecoilValue(todoListState);
 
   const [isOpen, setIsOpen] = useRecoilState(todoFormModalOpenState);
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const reset = () => {
     setTodo("");

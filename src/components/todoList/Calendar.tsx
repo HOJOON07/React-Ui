@@ -139,9 +139,11 @@ const Calendar: React.FC = () => {
     ));
 
   const range = () =>
-    [...Array(lastDay.getDate()).keys()].map((d: number) => (
-      <CalendarDay key={d} date={new Date(year, month, d + 1)} />
-    ));
+    [...Array(lastDay.getDate()).keys()].map((d: number) => {
+      const thisDay = new Date(year, month, d + 1);
+
+      return <CalendarDay key={d} date={thisDay}></CalendarDay>;
+    });
 
   const renderDays = () => {
     const items = [...pad(), ...range()];

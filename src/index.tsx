@@ -11,8 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <RecoilRoot>
-    <React.Suspense fallback={<Fallback></Fallback>}>
-      {/* <React.Suspense fallback={<p>Loading....</p>}> */}
+    <React.Suspense>
       <Router></Router>
     </React.Suspense>
   </RecoilRoot>

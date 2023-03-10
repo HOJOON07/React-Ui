@@ -69,11 +69,7 @@ const CalendarDay: React.FC<Props> = ({ date }) => {
   };
 
   return (
-    <TableData
-      key={`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`}
-      align="center"
-      onDoubleClick={() => handleTodoFormModalOpen(date.getDate())}
-    >
+    <TableData onDoubleClick={() => handleTodoFormModalOpen(date.getDate())}>
       <Container>
         <DisplayDate
           isSelected={isSameDay(selectedDate, date)}
@@ -90,3 +86,23 @@ const CalendarDay: React.FC<Props> = ({ date }) => {
 };
 
 export default CalendarDay;
+
+{
+  /* <TableData
+      key={`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`}
+      align="center"
+      onDoubleClick={() => handleTodoFormModalOpen(date.getDate())}
+    >
+      <Container>
+        <DisplayDate
+          isSelected={isSameDay(selectedDate, date)}
+          isToday={isSameDay(date, today)}
+          onClick={() => handleDateSelect(date.getDate())}
+          onDoubleClick={handleTodoStatisticsModalOpen}
+        >
+          {date.getDate()}
+        </DisplayDate>
+        <TodoList items={todoList} />
+      </Container>
+    </TableData> */
+}

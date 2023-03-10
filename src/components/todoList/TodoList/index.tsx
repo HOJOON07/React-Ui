@@ -49,13 +49,6 @@ interface Props {
   items: Array<Todo>;
 }
 
-// interface Todo {
-//   id: string;
-//   content: string;
-//   done: boolean;
-//   date: Date;
-// }
-
 const MAX_TODO_LIST_LENGTH = 3;
 
 const TodoList: React.FC<Props> = ({ items }) => {
@@ -96,9 +89,7 @@ const TodoList: React.FC<Props> = ({ items }) => {
           selected={
             item.date === selectedTodo?.date && item.id === selectedTodo?.id
           }
-          onClick={(event: React.SyntheticEvent<HTMLLIElement>) =>
-            handleClick(event, item)
-          }
+          onClick={(event) => handleClick(event, item)}
         >
           {item.content}
         </TodoItem>
