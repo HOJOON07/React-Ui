@@ -49,7 +49,7 @@ const Description = styled.p`
 const PlaceHolder: React.FC = () => (
   <Container>
     <ImageWrapper>
-      <Skeleton width={320} height={320}></Skeleton>
+      <Skeleton width={220} height={220}></Skeleton>
     </ImageWrapper>
     <Info>
       <Skeleton width={150} height={29} rounded></Skeleton>
@@ -78,7 +78,7 @@ function SkeletonApp() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 700);
   }, []);
 
   return (

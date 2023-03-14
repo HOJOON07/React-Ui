@@ -3,7 +3,11 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled/macro";
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from "react-icons/ri";
 
-const Base = styled.div``;
+const Base = styled.div`
+  width: 700px;
+  height: 500px;
+  margin: 0 auto;
+`;
 
 const Container = styled.div`
   position: relative;
