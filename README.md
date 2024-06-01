@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# 유저가 더 좋은 UI / UX 를 느끼게끔 하는 요소는 무엇이 있을까?? 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. 스켈레톤 (src/components/Skeleton)
+- 웹 페이지에서 로드 시간이 짧은 것처럼 보이게 하는 몇 가지 방법들
+- 콘텐츠의 자리비움(placeholder)를 표시해서 사용자가 기다리는 시간을 좀 덜 지루하게 느끼게끔 하는 UI이다.
+- 대표적인 예시로는 유튜브가 있다.
+- ![스크린샷 2024-06-01 오후 9 01 12](https://github.com/HOJOON07/React-Ui/assets/108918379/06ed0215-a9ce-47ff-9324-1bf01735ed5b)
 
-## Available Scripts
+## 2. 모달(src/components/Modal)
+- 모달은 기본 창위에 컴포넌트를 띄우는 방식이다.
+- 주의 또는 이목을 끌기 위한 효과적인 방법
+- React Portal을 활용하거나 다른 DOM요소를 띄우는 방법 등이 있다. (여기서는 Portal을 활용하도록 한다.)
+- 포탈은 부모 컴포넌트의 DOM 계층 구조 바깥에 있는 DOM 노드로 자식을 렌더링할 수 있다.
+![스크린샷 2024-06-01 오후 9 05 11](https://github.com/HOJOON07/React-Ui/assets/108918379/1c4a75d8-2c25-473a-a0fc-7294d1e229ba)
 
-In the project directory, you can run:
+## 3. 페이지네이션 (src/components/Pagination)
+- API를 통해서 많은 양의 데이터를 가져와 화면에 렌더링해야 하는 경우 성능 문제가 발생할 수 있다.
+- 많은 데이터를 불러오는 만큼 사용자가 응답을 기다리는 시간이 늘어날 수 있다.
+- 데이터의 갯수를 미리 알고 있고 데이터의 추가나 삭제가 자주 일어나지 않는다면 페이지네이션은 유용한 방법이 될 수 있다.
+- 페이지네이션을 활용한다면 ?
+  - 클릭 가능한 요소의 크기를 제공
+  - 현재 페이지를 표시
+  - 이전, 다음 페이지 링크를 제공
+  - 페이지 링크 간 간격을 넓힐 수 있다.
+  
+![스크린샷 2024-06-01 오후 9 06 50](https://github.com/HOJOON07/React-Ui/assets/108918379/cc8590b9-5acf-4792-bed1-898953bde132)
 
-### `npm start`
+## 4. 무한 스크롤 (src/components/Infinite Scroll)
+> API를 통해서 많은 양의 데이터를 가져와 성능을 최적활 할 때 페이지네이션을 쓸 수 있다고 했다. 그런데 모바일이라면?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 사용자가 스크롤링 하다가 미리 로드된 콘텐츠를 다 확인하면 다음 목록을 또 로드해서 별도의 인터렉션 없이 목록을 계속 불러오는 방식이다.
+- 스크롤이 최하단에 왔는지 판단하고 다음 콘텐츠를 불러오게 되는데 스크롤을 움직일 때마다 이벤트가 발생하기 때문에 성능 문제가 생길 수 있다. 이를 방지하기 위해 Intersetcion Observer API를 활용하여 최적화했다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 5. 캐러셀 (src/components/Carousel)
+> 사전적인 의미로 회전 목마라고 한다. 슬라이드 형태로 순환하며 이미지, 영상 등의 콘텐츠를 노출하는 UI를 말한다.
 
-### `npm test`
+- 사용자가 직접 컨트롤 할 수 있어야 하고, 터치 친화적이어야 더 나은 사용자 경험을 제공할 수 있다.
+  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
